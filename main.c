@@ -6,24 +6,26 @@
 /*   By: mdaifi <mdaifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 12:18:27 by mdaifi            #+#    #+#             */
-/*   Updated: 2021/04/27 15:47:53 by mdaifi           ###   ########.fr       */
+/*   Updated: 2021/04/30 17:06:18 by mdaifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_table(t_push_swap *t)
+void	print_table(t_push_swap *a, t_push_swap *b)
 {
 	int	i;
 
-	i = t->i;
+	i = 0;
 	printf("---------------------------------------------------\n");
-	while (i < t->size)
+	while (i < a->size)
 	{
 		// if (t->t[i] != 0)
-			printf("%d\n", t->t[i]);
+			printf("%d\t%d\n", a->t[i], b->t[i]);
 		i++;
 	}
+	printf("-\t-\n");
+	printf("a\tb\n");
 	printf("---------------------------------------------------\n");
 }
 
@@ -52,13 +54,13 @@ void	sort_table(t_push_swap *t)
 	}
 }
 
-int	find_median(t_push_swap *t)
+int	find_median(t_push_swap *t, int first, int last)
 {
 	int	median;
 	int	half_size;
 	int	size;
 
-	size = (t->size - t->i);
+	size = first + last;
 	if (size % 2 == 0)
 		size++;
 	half_size = size / 2;
@@ -110,11 +112,8 @@ int	main(int argc, char *argv[])
 	// pa(&b, &a);
 	// pa(&b, &a);
 	// printf("Stack a : \n");
-	// print_table(&a);
+	// print_table(&a, &b);
 	push_swap(&a, &b, &tmp);
-	// printf("Stack a : \n");
-	// print_table(&a);
-	// printf("Stack b : \n");
-	// print_table(&b);
+	// print_table(&a, &b);
 	return (0);
 }
