@@ -6,7 +6,7 @@
 /*   By: mdaifi <mdaifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 12:14:55 by mdaifi            #+#    #+#             */
-/*   Updated: 2021/04/30 16:12:02 by mdaifi           ###   ########.fr       */
+/*   Updated: 2021/05/03 15:51:02 by mdaifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ typedef struct	s_push_swap
 	int		*t;
 	int		size;
 	int		i;
+	int		top;
+	int		bot;
 }				t_push_swap;
 
 
