@@ -6,13 +6,13 @@
 /*   By: mdaifi <mdaifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 13:13:01 by mdaifi            #+#    #+#             */
-/*   Updated: 2021/04/27 15:28:07 by mdaifi           ###   ########.fr       */
+/*   Updated: 2021/05/25 15:40:27 by mdaifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra(t_push_swap *a)
+void	ra(t_push_swap *a, int nbr)
 {
 	int	i;
 	int	tmp;
@@ -26,10 +26,11 @@ void	ra(t_push_swap *a)
 		i++;
 	}
 	a->t[i - 1] = tmp;
-	printf("ra\n");
+	if (nbr == 1)
+		ft_putstr_fd("ra\n", 1);
 }
 
-void	rb(t_push_swap *b)
+void	rb(t_push_swap *b, int nbr)
 {
 	int	i;
 	int	tmp;
@@ -43,10 +44,18 @@ void	rb(t_push_swap *b)
 		i++;
 	}
 	b->t[i - 1] = tmp;
-	printf("rb\n");
+	if (nbr == 1)
+		ft_putstr_fd("rb\n", 1);
 }
 
-void	rra(t_push_swap *a)
+void	rr(t_push_swap *a, t_push_swap *b)
+{
+	ra(a, 0);
+	rb(b, 0);
+	ft_putstr_fd("rr\n", 1);
+}
+
+void	rra(t_push_swap *a, int nbr)
 {
 	int	tmp;
 	int	tmp2;
@@ -63,10 +72,11 @@ void	rra(t_push_swap *a)
 		i--;
 	}
 	a->t[a->i] = tmp;
-	printf("rra\n");
+	if (nbr == 1)
+		ft_putstr_fd("rra\n", 1);
 }
 
-void	rrb(t_push_swap *b)
+void	rrb(t_push_swap *b, int nbr)
 {
 	int	tmp;
 	int	tmp2;
@@ -83,11 +93,13 @@ void	rrb(t_push_swap *b)
 		i--;
 	}
 	b->t[b->i] = tmp;
-	printf("rrb\n");
+	if (nbr == 1)
+		ft_putstr_fd("rrb\n", 1);
 }
 
 void	rrr(t_push_swap *a, t_push_swap *b)
 {
-	rra(a);
-	rrb(b);
+	rra(a, 0);
+	rrb(b, 0);
+	ft_putstr_fd("rrr\n", 1);
 }

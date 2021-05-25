@@ -6,7 +6,7 @@
 /*   By: mdaifi <mdaifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 16:53:30 by mdaifi            #+#    #+#             */
-/*   Updated: 2021/05/04 16:40:32 by mdaifi           ###   ########.fr       */
+/*   Updated: 2021/05/25 15:34:18 by mdaifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,21 +58,21 @@ void	stack_of_three(t_push_swap *a)
 		if (a->t[a->i + 1] > a->t[a->size - 1])
 		{
 			sa(a);
-			rra(a);
+			rra(a, 1);
 		}
 		else
-			ra(a);
+			ra(a, 1);
 	}
 	else if (a->t[a->i] > a->t[a->i + 1] && a->t[a->i] < a->t[a->size - 1])
 		sa(a);
 	else if (a->t[a->i] < a->t[a->i + 1] && a->t[a->i] > a->t[a->size - 1])
-		rra(a);
+		rra(a, 1);
 	else if (a->t[a->i] < a->t[a->i + 1] && a->t[a->i] < a->t[a->size - 1])
 	{
 		if (a->t[a->i + 1] > a->t[a->size - 1])
 		{
 			sa(a);
-			ra(a);
+			ra(a, 1);
 		}
 	}
 }
@@ -102,7 +102,7 @@ void	stack_less_than_ten(t_push_swap *a, t_push_swap *b)
 		{
 			while (min - a->i > 0)
 			{
-				ra(a);
+				ra(a, 1);
 				min--;
 			}
 			pb(a, b);
@@ -112,7 +112,7 @@ void	stack_less_than_ten(t_push_swap *a, t_push_swap *b)
 		{
 			while (min < a->size)
 			{
-				rra(a);
+				rra(a, 1);
 				min++;
 			}
 			pb(a ,b);
@@ -185,290 +185,148 @@ void	stack_less_than_hund(t_push_swap *tmp, t_push_swap *a, t_push_swap *b)
 		{
 			while (first - a->i > 0)
 			{
-				ra(a);
+				ra(a, 1);
 				first--;
 			}
+			// print_table(a, b);
 			pb(a, b);
 		}
 		else
 		{
 			while (second <= a->size)
 			{
-				rra(a);
+				rra(a, 1);
 				second++;
 			}
 			pb(a ,b);
 		}
 		first = a->i;
 		second = a->size;
-		count_b++;
-		// if (b->size - b->i > 1 && b->t[b->i] < b->t[b->i + 1])
-		// 	sb(b);
 	}
-	// printf("count = %d\n", count_b);
-	// printf
-	// exit(0);
-	first = b->i;
-	second = b->size;
-	count = (b->size - b->i) / 3;
-	count_b = count;
-	count_a = 0;
-	tmp->i = 0;
-	split = b->i;
-	// exit(0);
-	// print_table(a, b);
-	while (count_a < 2)
-	{
-		if (b->i - split == count_b)
-		{
-			count_a++;
-		// printf("count_a : %d\n", count_a);
-			// split = b->i;
-			// printf("count_b : %d\n", count_b);
-			// print_table(a, b);
-			count_b += count;
-		}
-		if (count_a < 2)
-		{
-			while (b->t[first] > tmp->t[count_b])
-				first++;
-			while (b->t[second - 1] > tmp->t[count_b])
-				second--;
-			if (first - b->i < b->size - second)
-			{
-				while (first - b->i > 0)
-				{
-					rb(b);
-					first--;
-				}
-				pa(b, a);
-			}
-			else
-			{
-				while (second <= b->size)
-				{
-					rrb(b);
-					second++;
-				}
-				pa(b ,a);
-			}
-			first = b->i;
-			second = b->size;
-			tmp->i++;
-		}
-		//count_a++;
-		// printf("Split : %d\n", split);
-		// printf("b->size - (split / 2) : %d\n", b->size - (split / 2));
-		// print_table(a, b);
-	}
-	// print_table(a, b);
-	// first = a->i;
-	while (tmp->i > 0)
-	{
-		pb(a, b);
-		tmp->i--;
-	}
-	first = a->i;
-	second = a->size;
-	count_b += count;
-	split = a->i;
-	while (a->i < a->size - 3)
-	{
-		if (a->i == count_b)
-		{
-			count_a++;
-		// printf("count_a : %d\n", count_a);
-			// split = b->i;
-			// print_table(a, b);
-			// printf("count_b : %d\n", count_b);
-			count_b += count;
-		}
-		while (a->t[first] > tmp->t[count_b + 1])
-			first++;
-		while (a->t[second - 1] > tmp->t[count_b + 1])
-			second--;
-		if (first - a->i < a->size - second)
-		{
-			while (first - a->i > 0)
-			{
-				ra(a);
-				first--;
-			}
-			pb(a, b);
-		}
-		else
-		{
-			while (second <= a->size)
-			{
-				rra(a);
-				second++;
-			}
-			pb(a ,b);
-		}
-		first = a->i;
-		second = a->size;
-		//count_a++;
-		// printf("Split : %d\n", split);
-		// printf("b->size - (split / 2) : %d\n", b->size - (split / 2));
-		// print_table(a, b);
-	}
-	stack_of_three(a);
-	first = b->i;
-	second = b->size;
-	count = 3;
-	count_b = b->size - count;
-	while (b->i < b->size)
-	{
-		if (a->i == count_b)
-		{
-			count_a++;
-		// printf("count_a : %d\n", count_a);
-			// split = b->i;
-			// print_table(a, b);
-			// printf("count_b : %d\n", count_b);
-			count_b -= count;
-		}
-		// printf("count_b : %d\n", count_b);
-		while (b->t[first] < tmp->t[count_b])
-			first++;
-		while (b->t[second - 1] < tmp->t[count_b])
-			second--;
-		if (first - b->i < b->size - second)
-		{
-			while (first - b->i > 0)
-			{
-				rb(b);
-				first--;
-			}
-		}
-		else
-		{
-			while (second <= b->size)
-			{
-				rrb(b);
-				second++;
-			}
-		}
-		if (!is_max(a, b->t[b->i]))
-		{
-			pa(b, a);
-			ra(a);
-		}
-		else
-		{
-			max = a->t[a->size - 1];
-			shortest_path(a, b->t[b->i]);
-			// printf("a->top : %d\n", a->top);
-			// printf("a->bot : %d\n", a->bot);
-			// exit(0);
-			first = a->top;
-			second = a->bot;
-			if (a->top == 1)
-			{
-				pa(b, a);
-				sa(a);
-			}
-			else if (a->top > a->bot)
-			{
-				while (second > 0)
-				{
-					rra(a);
-					second--;
-				}
-				pa(b, a);
-				ra(a);
-				while (a->bot > 0)
-				{
-					ra(a);
-					a->bot--;
-				}
-			}
-			else
-			{
-				while (first > 0)
-				{
-					ra(a);
-					first--;
-				}
-				pa(b, a);
-				while (a->top > 0)
-				{
-					rra(a);
-					a->top--;
-				}
-			}
-		//count_a++;
-		// printf("Split : %d\n", split);
-		// printf("b->size - (split / 2) : %d\n", b->size - (split / 2));
-		// print_table(a, b);
-		}
-		first = b->i;
-		second = b->size;
-			// print_table(a, b);
-	// print_table(a, b);
-	// first = a->i;
-	// while (a->i < first + count_a)
-	// 	pb(a, b);
-	// max = b->i;
-	// while (b->i < b->size)
+	// first = b->i;
+	// second = b->size;
+	// count = (b->size - b->i) / 3;
+	// count_b = count;
+	// count_a = 0;
+	// tmp->i = 0;
+	// split = b->i;
+	// while (count_a < 2)
 	// {
-	// 	count_b = b->i;
-	// 	while (count_b < b->size)
+	// 	if (b->i - split == count_b)
 	// 	{
-	// 		if (b->t[count_b] > b->t[max])
-	// 			max = count_b;
-	// 		count_b++;
+	// 		count_a++;
+	// 		count_b += count;
 	// 	}
-	// 	// printf("max of b : %d\n", max - b->i);
-	// 	// printf("max  : %d\n", max);
-	// 	if (max - b->i < (b->size - b->i) / 2)
+	// 	if (count_a < 2)
 	// 	{
-	// 		while (max - b->i > 0)
+	// 		while (b->t[first] > tmp->t[count_b])
+	// 			first++;
+	// 		while (b->t[second - 1] > tmp->t[count_b])
+	// 			second--;
+	// 		if (first - b->i < b->size - second)
 	// 		{
-	// 			rb(b);
-	// 			max--;
+	// 			while (first - b->i > 0)
+	// 			{
+	// 				rb(b, "rb\n");
+	// 				first--;
+	// 			}
+	// 			pa(b, a);
 	// 		}
-	// 		pa(b, a);
+	// 		else
+	// 		{
+	// 			while (second <= b->size)
+	// 			{
+	// 				rrb(b, "rrb\n");
+	// 				second++;
+	// 			}
+	// 			pa(b ,a);
+	// 		}
+	// 		first = b->i;
+	// 		second = b->size;
+	// 		tmp->i++;
+	// 	}
+	// }
+	// // push back to a
+	// while (tmp->i > 0)
+	// {
+	// 	pb(a, b);
+	// 	tmp->i--;
+	// }
+	// first = a->i;
+	// second = a->size;
+	// count_b += count + 2;
+	// while (a->i < a->size)
+	// {
+	// 	if (a->i == count_b)
+	// 	{
+	// 		count_a++;
+	// 		count_b += count;
+	// 	}
+	// 	while (a->t[first] > tmp->t[count_b])
+	// 		first++;
+	// 	while (a->t[second - 1] > tmp->t[count_b])
+	// 		second--;
+	// 	if (first - a->i < a->size - second)
+	// 	{
+	// 		while (first - a->i > 0)
+	// 		{
+	// 			ra(a, 1);
+	// 			first--;
+	// 		}
+	// 		pb(a, b);
 	// 	}
 	// 	else
 	// 	{
-	// 		while (max < b->size)
+	// 		while (second <= a->size)
 	// 		{
-	// 			rrb(b);
-	// 			max++;
+	// 			rra(a, 1);
+	// 			second++;
 	// 		}
-	// 		pa(b, a);
+	// 		pb(a ,b);
 	// 	}
-	// 	// print_table(a, b);
+	// 	first = a->i;
+	// 	second = a->size;
 	// }
-	// print_table(a, b);
-	// pa(b, a);
-	// print_table(a, b);
-	// pa(b, a);
-	// print_table(a, b);
-	// if (a->t[a->i] > a->t[a->i + 1])
-	// 	sa(a);
+	// first = b->i;
+	// second = b->size;
+	// count = 6;
+	// count_b = b->size - count;
 	// while (b->i < b->size)
 	// {
-	// 	// printf("is_max : %d\n", is_max(a, b->t[b->i]));
-	// 	// print_table(a, b);
+	// 	if (a->i == count_b)
+	// 	{
+	// 		count_a++;
+	// 		count_b -= count;
+	// 	}
+	// 	while (b->t[first] < tmp->t[count_b])
+	// 		first++;
+	// 	while (b->t[second - 1] < tmp->t[count_b])
+	// 		second--;
+	// 	if (first - b->i < b->size - second)
+	// 	{
+	// 		while (first - b->i > 0)
+	// 		{
+	// 			rb(b, "rb\n");
+	// 			first--;
+	// 		}
+	// 	}
+	// 	else
+	// 	{
+	// 		while (second <= b->size)
+	// 		{
+	// 			rrb(b, "rrb\n");
+	// 			second++;
+	// 		}
+	// 	}
 	// 	if (!is_max(a, b->t[b->i]))
 	// 	{
 	// 		pa(b, a);
-	// 		ra(a);
+	// 		ra(a, 1);
 	// 	}
-	// 	// if (b->t[b->i] == tmp->t[tmp->size - 1])
-	// 	// {
-	// 	// 	pa(b, a);
-	// 	// 	ra(a);
-	// 	// }
 	// 	else
 	// 	{
 	// 		max = a->t[a->size - 1];
 	// 		shortest_path(a, b->t[b->i]);
-	// 		// printf("a->top : %d\n", a->top);
-	// 		// printf("a->bot : %d\n", a->bot);
-	// 		// exit(0);
 	// 		first = a->top;
 	// 		second = a->bot;
 	// 		if (a->top == 1)
@@ -480,14 +338,14 @@ void	stack_less_than_hund(t_push_swap *tmp, t_push_swap *a, t_push_swap *b)
 	// 		{
 	// 			while (second > 0)
 	// 			{
-	// 				rra(a);
+	// 				rra(a, 1);
 	// 				second--;
 	// 			}
 	// 			pa(b, a);
-	// 			ra(a);
+	// 			ra(a, 1);
 	// 			while (a->bot > 0)
 	// 			{
-	// 				ra(a);
+	// 				ra(a, 1);
 	// 				a->bot--;
 	// 			}
 	// 		}
@@ -495,42 +353,20 @@ void	stack_less_than_hund(t_push_swap *tmp, t_push_swap *a, t_push_swap *b)
 	// 		{
 	// 			while (first > 0)
 	// 			{
-	// 				ra(a);
+	// 				ra(a, 1);
 	// 				first--;
 	// 			}
 	// 			pa(b, a);
 	// 			while (a->top > 0)
 	// 			{
-	// 				rra(a);
+	// 				rra(a, 1);
 	// 				a->top--;
 	// 			}
 	// 		}
-	// 		// while (a->t[a->i] < b->t[b->i] && a->t[a->i] < max)
-	// 		// {
-	// 		// 	// print_table(a, b);
-	// 		// 	ra(a);
-	// 		// 	// sleep(1);
-	// 		// }
-	// 		// pa(b, a);
-	// 		// while (a->t[a->size - 1] < a->t[a->i])
-	// 		// 	rra(a);
-	// 		// if (a->t[a->i] > a->t[a->i + 1] && a->t[a->i] < a->t[a->size - 1])
-	// 		// {
-	// 		// 	// sa(a);
-	// 		// 	// if (a->t[a->i] < a->t[a->i + 1] && a->t[a->i + 1] > a->t[a->i + 2])
-	// 		// 	// 	ra(a);
-	// 		// 	while (a->t[a->i] > a->t[a->i + 1])
-	// 		// 	{
-	// 		// 		sa(a);
-	// 		// 		ra(a);
-	// 		// 	}
-	// 		// }
-	// 		// else if (a->t[a->i] > a->t[a->i + 1] && a->t[a->i] > a->t[a->size - 1])
-	// 		// 	ra(a);
 	// 	}
-	// 	// print_table(a, b);
+	// 	first = b->i;
+	// 	second = b->size;
 	// }
-	}
 	if (check_order(a) == 0)
 		printf("OK\n");
 }
