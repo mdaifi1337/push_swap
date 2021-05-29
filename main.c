@@ -6,7 +6,7 @@
 /*   By: mdaifi <mdaifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 12:18:27 by mdaifi            #+#    #+#             */
-/*   Updated: 2021/05/25 15:22:11 by mdaifi           ###   ########.fr       */
+/*   Updated: 2021/05/26 17:33:39 by mdaifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,11 @@ int	main(int argc, char *argv[])
 	int			bsize;
 	int			i;
 
+	// for (size_t x = 0; x < 2;)
+	// {
+	// 	x = 0;
+	// }
+	
 	a.size = argc - 1;
 	b.size = a.size;
 	tmp.size = a.size;

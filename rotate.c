@@ -6,13 +6,13 @@
 /*   By: mdaifi <mdaifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 13:13:01 by mdaifi            #+#    #+#             */
-/*   Updated: 2021/05/25 15:40:27 by mdaifi           ###   ########.fr       */
+/*   Updated: 2021/05/26 17:52:17 by mdaifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra(t_push_swap *a, int nbr)
+void	ra(t_push_swap *a, char *str)
 {
 	int	i;
 	int	tmp;
@@ -26,11 +26,11 @@ void	ra(t_push_swap *a, int nbr)
 		i++;
 	}
 	a->t[i - 1] = tmp;
-	if (nbr == 1)
-		ft_putstr_fd("ra\n", 1);
+	if (!ft_strncmp(str, "ra\n", 4))
+		write(1, str, 3);
 }
 
-void	rb(t_push_swap *b, int nbr)
+void	rb(t_push_swap *b, char *str)
 {
 	int	i;
 	int	tmp;
@@ -44,18 +44,18 @@ void	rb(t_push_swap *b, int nbr)
 		i++;
 	}
 	b->t[i - 1] = tmp;
-	if (nbr == 1)
-		ft_putstr_fd("rb\n", 1);
+	if (!ft_strncmp(str, "rb\n", 4))
+		write(1, str, 3);
 }
 
 void	rr(t_push_swap *a, t_push_swap *b)
 {
-	ra(a, 0);
-	rb(b, 0);
-	ft_putstr_fd("rr\n", 1);
+	ra(a, "KO\n");
+	rb(b, "KO\n");
+	write(1, "rr\n", 3);
 }
 
-void	rra(t_push_swap *a, int nbr)
+void	rra(t_push_swap *a, char *str)
 {
 	int	tmp;
 	int	tmp2;
@@ -72,11 +72,11 @@ void	rra(t_push_swap *a, int nbr)
 		i--;
 	}
 	a->t[a->i] = tmp;
-	if (nbr == 1)
-		ft_putstr_fd("rra\n", 1);
+	if (!ft_strncmp(str, "rra\n", 5))
+		write(1, str, 4);
 }
 
-void	rrb(t_push_swap *b, int nbr)
+void	rrb(t_push_swap *b, char *str)
 {
 	int	tmp;
 	int	tmp2;
@@ -93,13 +93,13 @@ void	rrb(t_push_swap *b, int nbr)
 		i--;
 	}
 	b->t[b->i] = tmp;
-	if (nbr == 1)
-		ft_putstr_fd("rrb\n", 1);
+	if (!ft_strncmp(str, "rrb\n", 5))
+		write(1, str, 4);
 }
 
 void	rrr(t_push_swap *a, t_push_swap *b)
 {
-	rra(a, 0);
-	rrb(b, 0);
-	ft_putstr_fd("rrr\n", 1);
+	rra(a, "KO\n");
+	rrb(b, "KO\n");
+	write(1, "rrr\n", 4);
 }
