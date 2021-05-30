@@ -6,7 +6,7 @@
 /*   By: mdaifi <mdaifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 12:09:40 by mdaifi            #+#    #+#             */
-/*   Updated: 2021/05/26 17:52:33 by mdaifi           ###   ########.fr       */
+/*   Updated: 2021/05/30 16:23:54 by mdaifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	sa(t_push_swap *a)
 	tmp = a->t[a->i];
 	a->t[a->i] = a->t[a->i + 1];
 	a->t[a->i + 1] = tmp;
-	write (1, "sa\n", 3);
+	// write (1, "sa\n", 3);
+	printf("sa\n");
 }
 
 void	sb(t_push_swap *b)
@@ -29,7 +30,8 @@ void	sb(t_push_swap *b)
 	tmp = b->t[b->i];
 	b->t[b->i] = b->t[b->i + 1];
 	b->t[b->i + 1] = tmp;
-	write (1, "sb\n", 3);
+	// write (1, "sb\n", 3);
+	printf("sb\n");
 }
 
 void	ss(t_push_swap *a, t_push_swap *b)

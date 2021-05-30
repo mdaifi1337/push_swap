@@ -6,7 +6,7 @@
 /*   By: mdaifi <mdaifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 13:13:01 by mdaifi            #+#    #+#             */
-/*   Updated: 2021/05/26 17:52:17 by mdaifi           ###   ########.fr       */
+/*   Updated: 2021/05/30 16:24:34 by mdaifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	ra(t_push_swap *a, char *str)
 	}
 	a->t[i - 1] = tmp;
 	if (!ft_strncmp(str, "ra\n", 4))
-		write(1, str, 3);
+		printf("%s", str);
+		// write(1, str, 3);
 }
 
 void	rb(t_push_swap *b, char *str)
@@ -45,14 +46,16 @@ void	rb(t_push_swap *b, char *str)
 	}
 	b->t[i - 1] = tmp;
 	if (!ft_strncmp(str, "rb\n", 4))
-		write(1, str, 3);
+		printf("%s", str);
+		// write(1, str, 3);
 }
 
 void	rr(t_push_swap *a, t_push_swap *b)
 {
 	ra(a, "KO\n");
 	rb(b, "KO\n");
-	write(1, "rr\n", 3);
+	printf("rr\n");
+	// write(1, "rr\n", 3);
 }
 
 void	rra(t_push_swap *a, char *str)
@@ -73,7 +76,8 @@ void	rra(t_push_swap *a, char *str)
 	}
 	a->t[a->i] = tmp;
 	if (!ft_strncmp(str, "rra\n", 5))
-		write(1, str, 4);
+		printf("%s", str);
+		// write(1, str, 4);
 }
 
 void	rrb(t_push_swap *b, char *str)
@@ -94,12 +98,14 @@ void	rrb(t_push_swap *b, char *str)
 	}
 	b->t[b->i] = tmp;
 	if (!ft_strncmp(str, "rrb\n", 5))
-		write(1, str, 4);
+		printf("%s", str);
+		// write(1, str, 4);
 }
 
 void	rrr(t_push_swap *a, t_push_swap *b)
 {
 	rra(a, "KO\n");
 	rrb(b, "KO\n");
+	printf("rrr\n");
 	write(1, "rrr\n", 4);
 }

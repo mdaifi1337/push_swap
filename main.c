@@ -6,7 +6,7 @@
 /*   By: mdaifi <mdaifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 12:18:27 by mdaifi            #+#    #+#             */
-/*   Updated: 2021/05/26 17:33:39 by mdaifi           ###   ########.fr       */
+/*   Updated: 2021/05/30 17:18:09 by mdaifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int	main(int argc, char *argv[])
 	// pa(&b, &a);
 	// printf("Stack a : \n");
 	// print_table(&a, &b);
-	push_swap(&a, &b, &tmp);
+	push_swap(&a, &b);
 	// print_table(&a, &b);
 	return (0);
 }
