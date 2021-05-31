@@ -6,7 +6,7 @@
 /*   By: mdaifi <mdaifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 16:53:30 by mdaifi            #+#    #+#             */
-/*   Updated: 2021/05/30 18:11:48 by mdaifi           ###   ########.fr       */
+/*   Updated: 2021/05/31 19:39:15 by mdaifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,20 +127,14 @@ void	stack_less_than_ten(t_push_swap *a, t_push_swap *b)
 int		max_val(int *t, int len)
 {
 	int	i;
-	int	j;
 	int	max;
 
-	i = 0;
+	i = 1;
 	max = 0;
-	while (i < len - 1)
+	while (i < len)
 	{
-		j = i + 1;
-		while (j < len)
-		{
-			if (t[j] > t[i])
-				max = j;
-			j++;
-		}
+		if (t[i] > t[max])
+			max = i;
 		i++;
 	}
 	return (max);
@@ -186,35 +180,37 @@ int		find_place(t_push_swap *t, int nbr)
 	int	i;
 	int	max_val_pos;
 
-	i = t->i;
+	i = 0;
 	t->second = t->size;
 	while (i < t->size)
 	{
-		if (nbr < t->t[t->i] && nbr > t->t[t->second - 1])
+		if (nbr < t->t[0] && nbr > t->t[t->second - 1])
 			return (0);
 		// printf("OK\n");
 		if (nbr > t->t[i] && nbr < t->t[i + 1])
 		{
 			// printf("First\n");
-			t->top = i - t->i;
-			return (i - t->i);
+			t->top = i;
+			return (i);
 		}
 		if (nbr < t->t[t->second - 1] && nbr > t->t[t->second - 2])
 		{
 			// printf("Second\n");
 			t->bot = t->size - t->second;
-			return (t->second);
+			return (t->size - t->second);
 		}
 		t->second--;
 		i++;
 	}
-	max_val_pos = max_val(t->t, t->size - t->i) + 1;
-	if (max_val_pos == t->size - t->i)
+	// printf("OK\n");
+	max_val_pos = max_val(t->t, t->size) + 1;
+	// printf("max val pos : %d\n", max_val_pos);
+	if (max_val_pos == t->size)
 		max_val_pos = 0;
-	if (max_val_pos > (t->size - t->i) - max_val_pos)
+	if (max_val_pos > t->size - max_val_pos)
 	{
 		t->top = 0;
-		t->bot = (t->size - t->i) - max_val_pos;
+		t->bot = t->size - max_val_pos;
 		return (t->bot);
 	}
 	t->top = max_val_pos;
@@ -260,45 +256,46 @@ void	stack_less_than_hund(t_push_swap *a, t_push_swap *b)
 	// while (++i < curr_val)
 	// 	printf("lis_elm[%d] : %d\n", i, lis_elm[i]);
 	i = 0;
-	while (curr_val < a->size - a->i)
+	while (curr_val < a->size)
 	{
 		if (in_lis(a->t[a->i], lis_elm, curr_val))
 			ra(a, "ra\n");
 		else
 			pb(a, b);
 	}
-	i = b->i;
-	res[0] = 0;
-	res[1] = b->size - b->i;
+	i = 0;
+	res[0] = a->size;
+	res[1] = b->size;
 	a->second = a->size;
 	b->second = b->size;
 	a->top = 0;
 	a->bot = 0;
-	print_table(a, b);
 	while (i < b->size)
 	{
-		tmp[1] = i;
 		// printf("b[i] : %d\n", b->t[i]);
 		tmp[0] = find_place(a, b->t[i]);
-		if (tmp[0] <= res[0] && tmp[1] <= res[1])
+		tmp[1] = i;
+		// printf("1 - tmp[0] : %d, tmp[1] : %d\n", tmp[0], tmp[1]);
+		if (tmp[0] < res[0] && tmp[1] < res[1])
 		{
 			res[0] = tmp[0];
 			res[1] = tmp[1];
 		}
-		// printf("res[0] : %d, res[1] : %d\n", res[0], res[1]);
 		tmp[0] = find_place(a, b->t[b->second - 1]);
-		tmp[1] = b->second;
-		if (tmp[0] <= res[0] && tmp[1] >= res[1])
+		tmp[1] = b->size - b->second;
+		// printf("2 - tmp[0] : %d, tmp[1] : %d\n", tmp[0], tmp[1]);
+		if (tmp[0] < res[0] && tmp[1] < res[1])
 		{
 			res[0] = tmp[0];
 			res[1] = tmp[1];
 		}
-		printf("a_top : %d, a_bot : %d\n", a->top, a->bot);
+		printf("res[0] : %d, res[1] : %d\n", res[0], res[1]);
 		b->second--;
 		i++;
 	}
+		printf("a_top : %d, a_bot : %d\n", a->top, a->bot);
 		printf("b[res[1]] : %d\n", b->t[res[1]]);
-	// print_table(a, b);
+	print_table(a, b);
 	// if (check_order(a) == 0)
 	// 	write(1, "OK\n", 3);
 }
