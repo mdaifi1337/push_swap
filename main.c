@@ -6,7 +6,7 @@
 /*   By: mdaifi <mdaifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 12:18:27 by mdaifi            #+#    #+#             */
-/*   Updated: 2021/05/31 18:56:24 by mdaifi           ###   ########.fr       */
+/*   Updated: 2021/06/03 19:23:42 by mdaifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	print_table(t_push_swap *a, t_push_swap *b)
 	i = 0;
 	j = 0;
 	printf("---------------------------------------------------\n");
-	printf("a->size : %d, b->size : %d\n", a->size, b->size);
 	if (a->size >= b->size)
 	{
 		while (i < a->size)
@@ -32,7 +31,7 @@ void	print_table(t_push_swap *a, t_push_swap *b)
 				j++;
 			}
 			else
-				printf("\t\n");
+				printf("\n");
 			i++;
 		}
 	}
@@ -101,7 +100,6 @@ int	main(int argc, char *argv[])
 {
 	t_push_swap	a;
 	t_push_swap	b;
-	t_push_swap	tmp;
 	int			asize;
 	int			bsize;
 	int			i;
@@ -112,25 +110,20 @@ int	main(int argc, char *argv[])
 	// }
 	
 	a.size = argc - 1;
-	b.t = NULL;
 	b.size = 0;
-	tmp.size = a.size;
 	a.t = (int *)malloc(sizeof(int) * a.size);
 	// b.t = (int *)malloc(sizeof(int) * b.size);
-	tmp.t = (int *)malloc(sizeof(int) * tmp.size);
 	i = -1;
 	// while (++i < b.size)
 	// 	b.t[i] = 0;
-	a.i = 0;
 	// b.i = a.size;
 	i = 0;
 	while (i < a.size)
 	{
 		a.t[i] = ft_atoi(argv[i + 1]);
-		tmp.t[i] = a.t[i];
 		i++;
 	}
-	sort_table(&tmp);
+	// sort_table(&tmp);
 	// print_table(&tmp);
 	// printf("Median : %d\n", find_median(&tmp));
 	// pb(&a, &b);
@@ -149,6 +142,7 @@ int	main(int argc, char *argv[])
 	// print_table(&a, &b);
 	// pb(&a, &b);
 	// pb(&a, &b);
+	// pb(&a, &b);
 	// // pb(&a, &b);
 	// // printf("Stack a : \n");
 	// print_table(&a, &b);
@@ -158,7 +152,8 @@ int	main(int argc, char *argv[])
 	// 		printf("b->t[%d] : %d\n", i, b.t[i]);
 	// 		i++;
 	// 	}
+	// print_table(&a, &b);
 	push_swap(&a, &b);
-	print_table(&a, &b);
+	// print_table(&a, &b);
 	return (0);
 }

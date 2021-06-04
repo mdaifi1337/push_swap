@@ -6,7 +6,7 @@
 /*   By: mdaifi <mdaifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 13:13:01 by mdaifi            #+#    #+#             */
-/*   Updated: 2021/05/30 16:24:34 by mdaifi           ###   ########.fr       */
+/*   Updated: 2021/06/02 16:34:26 by mdaifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ra(t_push_swap *a, char *str)
 	int	tmp;
 	int	tmp2;
 
-	i = a->i;
+	i = 0;
 	tmp = a->t[i];
 	while (i < a->size)
 	{
@@ -37,7 +37,7 @@ void	rb(t_push_swap *b, char *str)
 	int	tmp;
 	int	tmp2;
 
-	i = b->i;
+	i = 0;
 	tmp = b->t[i];
 	while (i < b->size)
 	{
@@ -64,17 +64,17 @@ void	rra(t_push_swap *a, char *str)
 	int	tmp2;
 	int	i;
 
-	i = a->i;
+	i = 0;
 	while (i < a->size)
 		i++;
 	i--;
 	tmp = a->t[i];
-	while (i > a->i)
+	while (i > 0)
 	{
 		a->t[i] = a->t[i - 1];
 		i--;
 	}
-	a->t[a->i] = tmp;
+	a->t[0] = tmp;
 	if (!ft_strncmp(str, "rra\n", 5))
 		printf("%s", str);
 		// write(1, str, 4);
@@ -86,17 +86,17 @@ void	rrb(t_push_swap *b, char *str)
 	int	tmp2;
 	int	i;
 
-	i = b->i;
+	i = 0;
 	while (i < b->size)
 		i++;
 	i--;
 	tmp = b->t[i];
-	while (i > b->i)
+	while (i > 0)
 	{
 		b->t[i] = b->t[i - 1];
 		i--;
 	}
-	b->t[b->i] = tmp;
+	b->t[0] = tmp;
 	if (!ft_strncmp(str, "rrb\n", 5))
 		printf("%s", str);
 		// write(1, str, 4);
@@ -107,5 +107,5 @@ void	rrr(t_push_swap *a, t_push_swap *b)
 	rra(a, "KO\n");
 	rrb(b, "KO\n");
 	printf("rrr\n");
-	write(1, "rrr\n", 4);
+	// write(1, "rrr\n", 4);
 }
