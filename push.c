@@ -6,108 +6,89 @@
 /*   By: mdaifi <mdaifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 14:49:34 by mdaifi            #+#    #+#             */
-/*   Updated: 2021/06/03 19:27:03 by mdaifi           ###   ########.fr       */
+/*   Updated: 2021/06/11 15:41:58 by mdaifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pa(t_push_swap *b, t_push_swap *a)
+static void	ft_inc_size(t_push_swap *st, int nbr)
 {
 	int	i;
 	int	*tmp;
-	int	*tab;
 
-	tmp = (int *)malloc(sizeof(int) * a->size);
+	tmp = (int *)malloc(sizeof(int) * st->size);
+	if (!tmp)
+		return ;
 	i = -1;
-	while (++i < a->size)
-		tmp[i] = a->t[i];
-	i = 0;
-	a->size += 1;
-	free(a->t);
-	a->t = (int *)malloc(sizeof(int) * a->size);
-	// b->t[0] = a->t[0]; add after copying values to new allocated b
-	a->t[0] = b->t[0];
-	i = 1;
-	while (i < a->size)
+	while (++i < st->size)
+		tmp[i] = st->t[i];
+	st->size += 1;
+	free(st->t);
+	st->t = (int *)malloc(sizeof(int) * st->size);
+	if (!st->t)
 	{
-		a->t[i] = tmp[i - 1];
-		i++;
+		free(tmp);
+		return ;
 	}
+	st->t[0] = nbr;
+	i = 0;
+	while (++i < st->size)
+		st->t[i] = tmp[i - 1];
 	free(tmp);
-	tmp = (int *)malloc(sizeof(int) * b->size - 1);
-	i = 0;
-	while (i < b->size)
-	{
-		tmp[i] = b->t[i + 1];
-		i++;
-	}
-	i = 0;
-	b->size -= 1;
-	free(b->t);
-	b->t = (int *)malloc(sizeof(int) * b->size);
-	// b->t[0] = a->t[0]; add after copying values to new allocated b
-	i = 0;
-	while (i < b->size)
-	{
-		b->t[i] = tmp[i];
-		i++;
-	}
-	free(tmp);
-	printf("pa\n");
 }
 
-void	pb(t_push_swap *a, t_push_swap *b)
+static void	ft_dec_size(t_push_swap *st)
 {
 	int	i;
 	int	*tmp;
-	int	*tab;
 
+	tmp = (int *)malloc(sizeof(int) * st->size - 1);
+	if (!tmp)
+		return ;
+	i = -1;
+	while (++i < st->size)
+		tmp[i] = st->t[i + 1];
+	st->size -= 1;
+	free(st->t);
+	st->t = (int *)malloc(sizeof(int) * st->size);
+	if (!st->t)
+	{
+		free(tmp);
+		return ;
+	}
+	i = -1;
+	while (++i < st->size)
+		st->t[i] = tmp[i];
+	free(tmp);
+}
+
+void	pa(t_push_swap *b, t_push_swap *a, char *str)
+{
+	if (b->size > 0)
+	{
+		ft_inc_size(a, b->t[0]);
+		ft_dec_size(b);
+		if (!ft_strncmp(str, "pa\n", 4))
+			write(1, "pa\n", 3);
+	}
+	if (b->size == 0)
+		free(b->t);
+}
+
+void	pb(t_push_swap *a, t_push_swap *b, char *str)
+{
 	if (!b->size)
 	{
 		b->t = (int *)malloc(sizeof(int));
-		b->t[0] = a->t[0];
-		b->size++;
+		if (!b->t)
+			return ;
 	}
-	else
+	if (a->size > 0)
 	{
-		tmp = (int *)malloc(sizeof(int) * b->size);
-		i = -1;
-		while (++i < b->size)
-			tmp[i] = b->t[i];
-		i = 0;
-		b->size += 1;
-		free(b->t);
-		b->t = (int *)malloc(sizeof(int) * b->size);
-		// b->t[0] = a->t[0]; add after copying valyes to new allocated b
-		b->t[0] = a->t[0];
-		i = 1;
-		while (i < b->size)
-		{
-			b->t[i] = tmp[i - 1];
-			i++;
-		}
-		free(tmp);
+		ft_inc_size(b, a->t[0]);
+		ft_dec_size(a);
 	}
-	tmp = (int *)malloc(sizeof(int) * a->size - 1);
-	i = 0;
-	while (i < a->size)
-	{
-		tmp[i] = a->t[i + 1];
-		i++;
-	}
-	i = 0;
-	a->size -= 1;
-	free(a->t);
-	a->t = (int *)malloc(sizeof(int) * a->size);
-	// b->t[0] = a->t[0]; add after copying valyes to new allocated b
-	i = 0;
-	while (i < a->size)
-	{
-		a->t[i] = tmp[i];
-		i++;
-	}
-	free(tmp);
-	printf("pb\n");
-	// write(1, "pb\n", 3);
+	if (!ft_strncmp(str, "pb\n", 4))
+		write(1, "pb\n", 3);
 }

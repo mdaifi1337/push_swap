@@ -14,18 +14,21 @@ FLG= -c -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
-%.o : %.c
-	gcc $(FLG) $<
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
+	@echo
+	@echo "~~~~~~~~ \033[1;36mSuccessfully created libft.a\033[0m ~~~~~~~~"
+	@echo
+%.o: %.c
+	@echo Compiling : $< "\x1B[1;32m[OK]\x1B[0m"
+	@gcc $(FLG) $<
 
 clean:
-	/bin/rm -f *.o
+	@/bin/rm -f *.o
 
 fclean: clean
-	/bin/rm -f $(NAME)
-
-re: fclean all
+	@/bin/rm -f $(NAME)
+	@echo "~~~~~~~~ \033[1;36mSuccessfully deleted libft.a\033[0m ~~~~~~~~"
 
 bonus: all $(BOBJ)
 	ar rc $(NAME) $(BOBJ)

@@ -6,7 +6,7 @@
 /*   By: mdaifi <mdaifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 19:57:53 by mdaifi            #+#    #+#             */
-/*   Updated: 2019/11/02 20:04:44 by mdaifi           ###   ########.fr       */
+/*   Updated: 2021/06/11 16:16:32 by mdaifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	i = 0;
 	if (!s)
 		return (ft_strdup(""));
-	if ((tmp = (char *)malloc(sizeof(char) * ft_strlen(s) + 1)))
+	tmp = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
+	if (tmp)
 	{
 		while (s[i])
 		{

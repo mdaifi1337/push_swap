@@ -6,7 +6,7 @@
 /*   By: mdaifi <mdaifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 21:39:39 by mdaifi            #+#    #+#             */
-/*   Updated: 2019/11/04 14:48:25 by mdaifi           ###   ########.fr       */
+/*   Updated: 2021/06/11 16:18:57 by mdaifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	int sign;
+	int	sign;
 
 	sign = 1;
 	if (n < 0)

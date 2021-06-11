@@ -6,7 +6,7 @@
 /*   By: mdaifi <mdaifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 20:34:49 by mdaifi            #+#    #+#             */
-/*   Updated: 2019/10/29 17:16:17 by mdaifi           ###   ########.fr       */
+/*   Updated: 2021/06/11 16:23:45 by mdaifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ static char	*convert(int count, int n)
 	int		ok;
 
 	ok = n;
-	if ((str = (char *)malloc(sizeof(char) * count + 1)))
+	str = (char *)malloc(sizeof(char) * count + 1);
+	if (str)
 	{
 		if (n < 0)
 			n = n * -1;
@@ -36,7 +37,7 @@ static char	*convert(int count, int n)
 	return (ft_strdup(""));
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	int		l;
 	int		count;

@@ -6,13 +6,13 @@
 /*   By: mdaifi <mdaifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 14:12:24 by mdaifi            #+#    #+#             */
-/*   Updated: 2019/10/28 13:49:13 by mdaifi           ###   ########.fr       */
+/*   Updated: 2021/06/11 16:16:03 by mdaifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strnstr(const char *s1, const char *s2, size_t len)
+char	*ft_strnstr(const char *s1, const char *s2, size_t len)
 {
 	size_t	i;
 	size_t	j;
@@ -34,6 +34,6 @@ char		*ft_strnstr(const char *s1, const char *s2, size_t len)
 			i++;
 	}
 	if (j == ft_strlen(s2))
-		return ((char*)s1 + (i - j));
+		return ((char *)s1 + (i - j));
 	return (NULL);
 }

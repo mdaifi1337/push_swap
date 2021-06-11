@@ -6,11 +6,11 @@
 /*   By: mdaifi <mdaifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 20:52:54 by mdaifi            #+#    #+#             */
-/*   Updated: 2019/10/20 22:36:56 by mdaifi           ###   ########.fr       */
+/*   Updated: 2021/06/11 16:14:57 by mdaifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isdigit(int c)
+int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);

@@ -6,19 +6,20 @@
 /*   By: mdaifi <mdaifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 20:49:17 by mdaifi            #+#    #+#             */
-/*   Updated: 2019/10/27 22:37:36 by mdaifi           ###   ########.fr       */
+/*   Updated: 2021/06/11 16:17:43 by mdaifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strdup(const char *str)
+char	*ft_strdup(const char *str)
 {
 	char	*tmp;
 	int		i;
 
 	i = 0;
-	if ((tmp = (char *)malloc((ft_strlen(str) + 1) * sizeof(char))))
+	tmp = (char *)malloc((ft_strlen(str) + 1) * sizeof(char));
+	if (tmp)
 	{
 		while (str[i])
 		{

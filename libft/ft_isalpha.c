@@ -6,14 +6,14 @@
 /*   By: mdaifi <mdaifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 14:27:46 by mdaifi            #+#    #+#             */
-/*   Updated: 2019/10/20 22:35:57 by mdaifi           ###   ########.fr       */
+/*   Updated: 2021/06/11 16:14:40 by mdaifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isalpha(int c)
+int	ft_isalpha(int c)
 {
-	if ((c >= 'A' && c <= 'Z') ||
-		(c >= 'a' && c <= 'z'))
+	if ((c >= 'A' && c <= 'Z')
+		|| (c >= 'a' && c <= 'z'))
 		return (1);
 	else
 		return (0);
