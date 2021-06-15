@@ -6,7 +6,7 @@
 /*   By: mdaifi <mdaifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 12:14:55 by mdaifi            #+#    #+#             */
-/*   Updated: 2021/06/11 16:57:42 by mdaifi           ###   ########.fr       */
+/*   Updated: 2021/06/13 16:38:59 by mdaifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 # include "libft/libft.h"
 
 typedef struct s_push_swap
@@ -25,7 +26,7 @@ typedef struct s_push_swap
 	int	top;
 	int	bot;
 	int	second;
-}				t_push_swap;
+}	t_push_swap;
 
 int		min_val(int *t, int len);
 int		max_val(int *t, int len);

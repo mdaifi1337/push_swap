@@ -6,7 +6,7 @@
 /*   By: mdaifi <mdaifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 18:43:15 by mdaifi            #+#    #+#             */
-/*   Updated: 2021/06/11 16:42:44 by mdaifi           ###   ########.fr       */
+/*   Updated: 2021/06/12 14:52:17 by mdaifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	find_best(t_push_swap *a, t_push_swap *b)
 	i = -1;
 	tmp = (int *)malloc(sizeof(int) * 2);
 	res = allocate_and_init(a, b);
-	while (++i < b->size)
+	while (++i < b->second)
 	{
 		tmp[0] = find_place(a, b->t[i]);
 		tmp[1] = i;

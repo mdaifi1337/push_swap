@@ -6,7 +6,7 @@
 /*   By: mdaifi <mdaifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 18:24:14 by mdaifi            #+#    #+#             */
-/*   Updated: 2021/06/10 15:45:24 by mdaifi           ###   ########.fr       */
+/*   Updated: 2021/06/12 15:15:02 by mdaifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_order(t_push_swap *t)
 	int	res;
 	int	i;
 
-	res = 0;
+	res = 1;
 	i = 0;
 	if (t->size == 0)
 		res = 1;
@@ -25,7 +25,7 @@ int	check_order(t_push_swap *t)
 	{
 		if (t->t[i] > t->t[i + 1])
 		{
-			res = 1;
+			res = 0;
 			return (res);
 		}
 		i++;

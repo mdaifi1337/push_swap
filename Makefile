@@ -22,7 +22,7 @@ $(NAME): $(LIBFT) $(OBJS)
 $(NAME2): $(LIBFT) $(OBJS2)
 	@gcc $(LIBFT) $(OBJS2) -o $(NAME2)
 	@echo
-	@echo "~~~~~~~~ \033[1;36mSuccessfully generated push_swap\033[0m ~~~~~~~~"
+	@echo "~~~~~~~~ \033[1;36mSuccessfully generated checker\033[0m ~~~~~~~~"
 	@echo
 
 %.o: %.c
@@ -35,7 +35,7 @@ fclean: clean
 		@make fclean -C ./libft
 		@rm -f miniRT.bmp
 		@rm -f $(NAME) $(NAME2)
-		@echo "~~~~~~~~ \033[1;36mSuccessfully deleted push_swap\033[0m ~~~~~~~~"
+		@echo "~~~~~~~~ \033[1;36mSuccessfully deleted push_swap and checker\033[0m ~~~~~~~~"
 re: fclean all
 
 .PHONY: libft

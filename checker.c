@@ -6,7 +6,7 @@
 /*   By: mdaifi <mdaifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 18:04:28 by mdaifi            #+#    #+#             */
-/*   Updated: 2021/06/11 16:02:03 by mdaifi           ###   ########.fr       */
+/*   Updated: 2021/06/15 14:31:13 by mdaifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,10 @@ int	main(int argc, char *argv[])
 		check_input_vals(argv + 1, &a);
 	}
 	checker(&a, &b);
-	if (check_order(&a))
-		write(1, "KO\n", 4);
-	else
-		write(1, "OK\n", 4);
+	if (check_order(&a) && !b.size && argc > 1)
+		write(1, "OK\n", 3);
+	else if (!check_order(&a) && argc > 1)
+		write(1, "KO\n", 3);
 	free(a.t);
 	return (0);
 }

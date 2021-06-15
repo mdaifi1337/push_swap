@@ -6,7 +6,7 @@
 /*   By: mdaifi <mdaifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 18:39:28 by mdaifi            #+#    #+#             */
-/*   Updated: 2021/06/11 15:41:19 by mdaifi           ###   ########.fr       */
+/*   Updated: 2021/06/15 14:34:19 by mdaifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,20 @@
 
 void	rr(t_push_swap *a, t_push_swap *b, char *str)
 {
-	ra(a, "KO\n");
-	rb(b, "KO\n");
+	if (a->size > 0)
+		ra(a, "KO\n");
+	if (b->size > 0)
+		rb(b, "KO\n");
 	if (!ft_strncmp(str, "rr\n", 4))
 		write(1, "rr\n", 3);
 }
 
 void	rrr(t_push_swap *a, t_push_swap *b, char *str)
 {
-	rra(a, "KO\n");
-	rrb(b, "KO\n");
+	if (a->size > 0)
+		rra(a, "KO\n");
+	if (b->size > 0)
+		rrb(b, "KO\n");
 	if (!ft_strncmp(str, "rrr\n", 5))
 		write(1, "rrr\n", 4);
 }

@@ -6,7 +6,7 @@
 /*   By: mdaifi <mdaifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 16:53:30 by mdaifi            #+#    #+#             */
-/*   Updated: 2021/06/11 16:39:22 by mdaifi           ###   ########.fr       */
+/*   Updated: 2021/06/12 15:15:35 by mdaifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	align_a(t_push_swap *a)
 
 void	insert_next(t_push_swap *a, t_push_swap *b)
 {
-	while (b->size)
+	while (b->size > 0)
 	{
 		init_vars(a, b);
 		find_best(a, b);
@@ -114,12 +114,12 @@ void	push_swap(char **tab, int size)
 			a.t[i] = ft_atoi(tab[i + 1]);
 		check_input_vals(tab + 1, &a);
 	}
-	if (a.size == 2 && check_order(&a))
+	if (a.size == 2 && !check_order(&a))
 		if (a.t[0] > a.t[1])
 			sa(&a, "sa\n");
-	if (a.size == 3 && check_order(&a))
+	if (a.size == 3 && !check_order(&a))
 		stack_of_three(&a);
-	else if (a.size > 3 && check_order(&a))
+	else if (a.size > 3 && !check_order(&a))
 		sort_stack(&a, &b);
 	free(a.t);
 }
